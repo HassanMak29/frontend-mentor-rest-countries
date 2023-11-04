@@ -9,9 +9,9 @@ export default function CountryCard({ country }: { country: Country }) {
     >
       <img src={flags.png} alt="flag" className="h-48 w-full" />
       <div className="min-h-48 flex flex-col gap-6 px-7 pb-3 pt-6">
-        <h3 className="text-md font-bold">
+        <h2 className="text-md font-bold">
           {name.official ? name.official : name.common}
-        </h3>
+        </h2>
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 text-sm capitalize">
             <span className="font-semibold">population: </span>
