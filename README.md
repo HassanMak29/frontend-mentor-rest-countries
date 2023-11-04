@@ -1,27 +1,40 @@
-# React + TypeScript + Vite
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca/hub).
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Screenshot
 
-- Configure the top-level `parserOptions` property like this:
+![](./screenshots/screenshot.png)
+![](./screenshots/screenshot-details.png)
+![](./screenshots/screenshot-search.png)
+![](./screenshots/screenshot-mobile.png)
+![](./screenshots/screenshot-mobile-details.png)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Links
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Solution URL: [Solution URL](https://github.com/HassanMak29/frontend-mentor-rest-countries)
+- Live Site URL: [Live site URL](https://frontend-mentor-rest-countries-hassan.netlify.app/)
+
+### Built with
+
+- Semantic HTML5 markup
+- Flexbox
+- Desktop-first workflow
+- [Vite](https://vite.dev/) - JS tool
+- [Tailwind CSS](https://tailwindcss.com/) - For styles
+
+## Author
+
+- Website - [Abdelmounaim H. Makhloufi](https://www.makhloufi.me)
+- Frontend Mentor - [@HassanMak29](https://www.frontendmentor.io/profile/HassanMak29)

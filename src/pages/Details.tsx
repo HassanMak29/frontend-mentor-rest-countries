@@ -8,7 +8,7 @@ import { Country } from "../types";
 
 const fetchCountry = async (countryCode: string) => {
   const res = await axios.get<Country[]>(
-    `https://restcountries.com/v3.1/alpha/${countryCode}`
+    `https://restcountries.com/v3.1/alpha/${countryCode}`,
   );
   return res.data;
 };
@@ -52,9 +52,9 @@ export default function Details() {
   }, [borders, loading]);
 
   return (
-    <div className="md:py-14 md:px-10 py-10 px-6 min-h-screen">
+    <div className="min-h-screen px-6 py-10 md:px-10 md:py-14">
       <button
-        className="flex items-center gap-3 py-1.5 px-6 text-sm rounded-md shadow-[0_0_10px_.5px_rgba(0,0,0,0.2)] mb-14 text-Text"
+        className=" mb-14 flex items-center gap-3 rounded-md px-6 py-1.5 text-sm text-Text shadow-[0_0_10px_.5px_rgba(0,0,0,0.2)]"
         onClick={() => {
           navigate(-1);
         }}
@@ -65,43 +65,43 @@ export default function Details() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col md:flex-row gap-14">
-          <div className="basis-2/5 h-64">
-            <img src={flags.png} alt="country flag" className="w-full h-full" />
+        <div className="flex flex-col gap-14 md:flex-row">
+          <div className="h-64 basis-2/5">
+            <img src={flags.png} alt="country flag" className="h-full w-full" />
           </div>
-          <div className="flex-1 text-Text text-sm flex flex-col justify-center gap-5">
-            <h1 className="font-bold text-lg">{name.official}</h1>
-            <ul className="columns-2 flex flex-col gap-2 md:flex-wrap md:h-36 mb-4 md:mb-0">
+          <div className="flex flex-1 flex-col justify-center gap-5 text-sm text-Text">
+            <h1 className="text-lg font-bold">{name.official}</h1>
+            <ul className="mb-4 flex columns-2 flex-col gap-2 md:mb-0 md:h-36 md:flex-wrap">
               <li className="flex gap-2">
-                <span className="capitalize font-semibold">Native Name: </span>
+                <span className="font-semibold capitalize">Native Name: </span>
                 <p>
                   {name.nativeName[Object.keys(name.nativeName)[0]].official}
                 </p>
               </li>
               <li className="flex gap-2">
-                <span className="capitalize font-semibold">Population: </span>
+                <span className="font-semibold capitalize">Population: </span>
                 <p>{new Intl.NumberFormat().format(population)}</p>
               </li>
               <li className="flex gap-2">
-                <span className="capitalize font-semibold">Region: </span>
+                <span className="font-semibold capitalize">Region: </span>
                 <p>{region}</p>
               </li>
               <li className="flex gap-2">
-                <span className="capitalize font-semibold">Sub region: </span>
+                <span className="font-semibold capitalize">Sub region: </span>
                 <p>{subregion}</p>
               </li>
-              <li className="flex gap-2 mb-8 md:mb-0">
-                <span className="capitalize font-semibold">Capital: </span>
+              <li className="mb-8 flex gap-2 md:mb-0">
+                <span className="font-semibold capitalize">Capital: </span>
                 <p>{capital}</p>
               </li>
               <li className="flex gap-2">
-                <span className="capitalize font-semibold">
+                <span className="font-semibold capitalize">
                   Top level domain:
                 </span>
                 <p>{tld[0]}</p>
               </li>
               <li className="flex gap-2">
-                <span className="capitalize font-semibold">Currencies:</span>
+                <span className="font-semibold capitalize">Currencies:</span>
                 <p>
                   {Object.values(currencies)
                     .map((cur) => cur.name)
@@ -109,24 +109,24 @@ export default function Details() {
                 </p>
               </li>
               <li className="flex gap-2">
-                <span className="capitalize font-semibold">Languages:</span>
+                <span className="font-semibold capitalize">Languages:</span>
                 <p>{Object.values(languages).join(", ")}</p>
               </li>
             </ul>
             <div
-              className={`flex md:flex-row flex-col md:items-start ${
+              className={`flex flex-col md:flex-row md:items-start ${
                 borderCountries.length ? "gap-4" : "gap-2"
               }`}
             >
-              <span className="capitalize font-semibold">
+              <span className="font-semibold capitalize">
                 Border countries:
               </span>
-              <div className="flex gap-4 flex-wrap">
+              <div className="flex flex-wrap gap-4">
                 {borderCountries.length ? (
                   borderCountries.map((b, i) => (
                     <a
                       key={b}
-                      className="py-.5 px-5 text-sm rounded-sm shadow-[0_0_10px_.1px_rgba(0,0,0,0.2)] text-Text bg-Elements"
+                      className="py-.5 rounded-sm bg-Elements px-5 text-sm text-Text shadow-[0_0_10px_.1px_rgba(0,0,0,0.2)]"
                       href={`/${borders?.[i]}`}
                     >
                       {b}

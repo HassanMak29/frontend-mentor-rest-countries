@@ -27,7 +27,7 @@ export default function Home() {
 
   const regions: string[] = useMemo(
     () => Array.from(new Set(countries?.map((country) => country.region))),
-    [countries]
+    [countries],
   );
 
   const filteredCountries: Country[] | undefined = useMemo(
@@ -48,11 +48,11 @@ export default function Home() {
         else if (searchRegion) return isInRegion;
         else return country;
       }),
-    [countries, search, searchRegion]
+    [countries, search, searchRegion],
   );
 
   return (
-    <div className="md:py-7 md:px-10 p-6">
+    <div className="p-6 md:px-10 md:py-7">
       <SearchBar regions={regions} />
       {loading ? (
         <Spinner />

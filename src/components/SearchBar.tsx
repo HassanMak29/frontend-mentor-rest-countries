@@ -9,18 +9,18 @@ export default forwardRef(function SearchBar(
   }: {
     regions: string[];
   },
-  ref: React.ForwardedRef<HTMLDivElement | null>
+  ref: React.ForwardedRef<HTMLDivElement | null>,
 ) {
   const { filter, filterFunc, search, getSearchValue, region, getRegion } =
     useSearchFilter();
 
   return (
-    <div className="flex md:flex-row flex-col md:items-center gap-3 md:gap-0 justify-between mb-6">
-      <div className="flex items-center relative">
-        <AiOutlineSearch className="text-InputText text-xl absolute left-5" />
+    <div className="mb-6 flex flex-col justify-between gap-3 md:flex-row md:items-center md:gap-0">
+      <div className="relative flex items-center">
+        <AiOutlineSearch className="absolute left-5 text-xl text-InputText" />
         <input
           type="text"
-          className="pl-14 pr-4 py-3 w-96 rounded shadow-sm text-InputText outline-Input"
+          className="w-96 rounded py-3 pl-14 pr-4 text-InputText shadow-sm outline-Input"
           placeholder="Search for a country..."
           value={search}
           onChange={(e) => {
@@ -28,7 +28,7 @@ export default forwardRef(function SearchBar(
           }}
         />
       </div>
-      <div className="flex flex-col gap-2 relative text-sm">
+      <div className="relative flex flex-col gap-2 text-sm">
         <div
           className="absolute inset-0 z-0"
           onClick={() => {
@@ -37,7 +37,7 @@ export default forwardRef(function SearchBar(
         ></div>
         <div
           ref={ref}
-          className="w-52 py-4 px-5 rounded cursor-pointer shadow flex items-center text-Text justify-between bg-Elements z-10"
+          className="z-10 flex w-52 cursor-pointer items-center justify-between rounded bg-Elements px-5 py-4 text-Text shadow"
           onClick={() => {
             filterFunc((filter) => !filter);
           }}
@@ -50,9 +50,9 @@ export default forwardRef(function SearchBar(
         <div
           className={`${
             filter ? "" : "hidden"
-          } absolute top-14 w-52 py-3 px-5 rounded bg-Elements shadow text-Text`}
+          } absolute top-14 w-52 rounded bg-Elements px-5 py-3 text-Text shadow`}
         >
-          <ul className="flex flex-col gap-3 max-h-32 overflow-scroll">
+          <ul className="flex max-h-32 flex-col gap-3 overflow-scroll">
             <li
               key={"all"}
               className="cursor-pointer capitalize hover:text-InputText"
