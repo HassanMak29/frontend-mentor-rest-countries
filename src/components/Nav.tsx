@@ -1,4 +1,4 @@
-import { MdDarkMode, MdOutlineDarkMode } from "react-icons/Md";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { useTheme } from "../context/themeContext/useTheme";
 
 export default function Nav() {
