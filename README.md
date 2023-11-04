@@ -15,11 +15,11 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 
 ### Screenshot
 
-![](./screenshots/screenshot.png)
-![](./screenshots/screenshot-details.png)
-![](./screenshots/screenshot-search.png)
-![](./screenshots/screenshot-mobile.png)
-![](./screenshots/screenshot-mobile-details.png)
+![](./screenshots/screenshot.jpg)
+![](./screenshots/screenshot-details.jpg)
+![](./screenshots/screenshot-search.jpg)
+![](./screenshots/screenshot-mobile.jpg)
+![](./screenshots/screenshot-mobile-details.jpg)
 
 ### Links
 
