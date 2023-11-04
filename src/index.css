@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-Background: 0deg 0% 98%;
+    --color-Elements: 0deg 0% 100%;
+    --color-Text: 200deg 15% 8%;
+    --color-Input: 0deg 0% 52%;
+    --color-Input-text: 0deg 0% 52%;
+  }
+
+  .dark {
+    --color-Background: 207deg 26% 17%;
+    --color-Elements: 209deg 23% 22%;
+    --color-Text: 0deg 0% 100%;
+    --color-Input: 0deg 0% 100%;
+    --color-Input-text: 0deg 0% 52%;
+  }
+}
