@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { Country } from "../types";
 
@@ -15,13 +15,13 @@ const fetchCountry = async (countryCode: string) => {
 
 export default function Details() {
   const { countryCode } = useParams();
-  const navigate = useNavigate();
   const [borderCountries, setBorderCountries] = useState<string[]>([]);
 
   const { data: country, isPending: loading } = useQuery({
-    queryKey: ["countries"],
+    queryKey: ["country", countryCode],
     queryFn: () => {
       if (!countryCode) return;
+      setBorderCountries([]);
       return fetchCountry(countryCode);
     },
   });
@@ -53,15 +53,13 @@ export default function Details() {
 
   return (
     <div className="min-h-screen px-6 py-10 md:px-10 md:py-14">
-      <button
-        className=" mb-14 flex items-center gap-3 rounded-md px-6 py-1.5 text-sm text-Text shadow-[0_0_10px_.5px_rgba(0,0,0,0.2)]"
-        onClick={() => {
-          navigate(-1);
-        }}
+      <Link
+        className="mb-14 flex w-28 items-center gap-3 rounded-md px-6 py-1.5 text-sm text-Text shadow-[0_0_10px_.5px_rgba(0,0,0,0.2)]"
+        to="/"
       >
         <BsArrowLeft className="text-lg" />
         Back
-      </button>
+      </Link>
       {loading ? (
         <Spinner />
       ) : (
@@ -71,47 +69,55 @@ export default function Details() {
           </div>
           <div className="flex flex-1 flex-col justify-center gap-5 text-sm text-Text">
             <h1 className="text-lg font-bold">{name.official}</h1>
-            <ul className="mb-4 flex columns-2 flex-col gap-2 md:mb-0 md:h-36 md:flex-wrap">
-              <li className="flex gap-2">
-                <span className="font-semibold capitalize">Native Name: </span>
-                <p>
-                  {name.nativeName[Object.keys(name.nativeName)[0]].official}
-                </p>
-              </li>
-              <li className="flex gap-2">
-                <span className="font-semibold capitalize">Population: </span>
-                <p>{new Intl.NumberFormat().format(population)}</p>
-              </li>
-              <li className="flex gap-2">
-                <span className="font-semibold capitalize">Region: </span>
-                <p>{region}</p>
-              </li>
-              <li className="flex gap-2">
-                <span className="font-semibold capitalize">Sub region: </span>
-                <p>{subregion}</p>
-              </li>
-              <li className="mb-8 flex gap-2 md:mb-0">
-                <span className="font-semibold capitalize">Capital: </span>
-                <p>{capital}</p>
-              </li>
-              <li className="flex gap-2">
-                <span className="font-semibold capitalize">
-                  Top level domain:
-                </span>
-                <p>{tld[0]}</p>
-              </li>
-              <li className="flex gap-2">
-                <span className="font-semibold capitalize">Currencies:</span>
-                <p>
-                  {Object.values(currencies)
-                    .map((cur) => cur.name)
-                    .join(", ")}
-                </p>
-              </li>
-              <li className="flex gap-2">
-                <span className="font-semibold capitalize">Languages:</span>
-                <p>{Object.values(languages).join(", ")}</p>
-              </li>
+            <ul className="mb-4 flex gap-4">
+              <div className="flex flex-col gap-2">
+                <li className="flex gap-2">
+                  <span className="font-semibold capitalize">
+                    Native Name:{" "}
+                  </span>
+                  <p>
+                    {name.nativeName[Object.keys(name.nativeName)[0]].official}
+                  </p>
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold capitalize">Population: </span>
+                  <p>{new Intl.NumberFormat().format(population)}</p>
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold capitalize">Region: </span>
+                  <p>{region}</p>
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold capitalize">Sub region: </span>
+                  <p>{subregion}</p>
+                </li>
+                <li className="mb-8 flex gap-2 md:mb-0">
+                  <span className="font-semibold capitalize">Capital: </span>
+                  <p>{capital}</p>
+                </li>
+              </div>
+              <div className="flex flex-col gap-2">
+                <li className="flex gap-2">
+                  <span className="font-semibold capitalize">
+                    Top level domain:
+                  </span>
+                  <p>{tld[0]}</p>
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold capitalize">Currencies:</span>
+                  <p>
+                    {Object.values(currencies)
+                      .map((cur) => cur.name)
+                      .join(", ")}
+                  </p>
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold capitalize">Languages:</span>
+                  <p className="max-w-sm">
+                    {Object.values(languages).join(", ")}
+                  </p>
+                </li>
+              </div>
             </ul>
             <div
               className={`flex flex-col md:flex-row md:items-start ${
@@ -124,13 +130,13 @@ export default function Details() {
               <div className="flex flex-wrap gap-4">
                 {borderCountries.length ? (
                   borderCountries.map((b, i) => (
-                    <a
-                      key={b}
+                    <Link
+                      key={i}
                       className="py-.5 rounded-sm bg-Elements px-5 text-sm text-Text shadow-[0_0_10px_.1px_rgba(0,0,0,0.2)]"
-                      href={`/${borders?.[i]}`}
+                      to={`/${borders?.[i]}`}
                     >
                       {b}
-                    </a>
+                    </Link>
                   ))
                 ) : (
                   <span>None...</span>

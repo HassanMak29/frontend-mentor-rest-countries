@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import NotFound from "./pages/NotFound";
@@ -13,13 +13,11 @@ function App() {
       className={`${darkTheme ? "dark" : ""} h-full min-h-screen bg-Background`}
     >
       <Nav />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:countryCode" element={<Details />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:countryCode" element={<Details />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </main>
   );
 }

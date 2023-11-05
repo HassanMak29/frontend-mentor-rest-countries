@@ -20,7 +20,7 @@ export default forwardRef(function SearchBar(
         <AiOutlineSearch className="absolute left-5 text-xl text-InputText" />
         <input
           type="text"
-          className="w-96 rounded py-3 pl-14 pr-4 text-InputText shadow-sm outline-Input"
+          className="w-96 rounded bg-Elements py-3 pl-14 pr-4 text-InputText shadow-sm outline-Input"
           placeholder="Search for a country..."
           value={search}
           onChange={(e) => {
@@ -50,9 +50,9 @@ export default forwardRef(function SearchBar(
         <div
           className={`${
             filter ? "" : "hidden"
-          } absolute top-14 w-52 rounded bg-Elements px-5 py-3 text-Text shadow`}
+          } absolute top-14 z-10 w-52 rounded bg-Elements px-5 py-3 text-Text shadow`}
         >
-          <ul className="flex max-h-32 flex-col gap-3 overflow-scroll">
+          <ul className="flex max-h-32 flex-col gap-3 overflow-y-auto">
             <li
               key={"all"}
               className="cursor-pointer capitalize hover:text-InputText"
